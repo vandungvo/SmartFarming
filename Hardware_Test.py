@@ -9,8 +9,7 @@ except:
 
 modbus485 = Utilities.modbus485.Modbus485(ser)
 
-#relay1_ON  = [1, 6, 0, 0, 0, 255, 201, 138]
-relay1_ON  = [0, 6, 0, 0, 0, 255, 200, 91]
+relay1_ON  = [1, 6, 0, 0, 0, 255, 201, 138]
 relay1_OFF = [1, 6, 0, 0, 0, 0, 137, 202]
 
 relay2_ON  = [2, 6, 0, 0, 0, 255, 201, 185]
@@ -48,6 +47,9 @@ def readHumidity():
     ser.write(soil_humidity)    
     time.sleep(1)    
     return modbus485.modbus485_read_adc(ser)
+
+print("Temperature: ", readTemperature())
+print("Humidity: ", readHumidity())
 
 modbus485.modbus485_send(relay1_ON)
 time.sleep(1)
@@ -95,4 +97,4 @@ time.sleep(1)
 modbus485.modbus485_send(relay8_OFF)
 time.sleep(1)
 
-# modbus485.modbus485_read()
+modbus485.modbus485_read()
