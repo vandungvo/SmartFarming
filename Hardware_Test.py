@@ -37,16 +37,14 @@ soil_temperature = [10, 3, 0, 6, 0, 1, 101, 112]
 soil_humidity = [10, 3, 0, 7, 0, 1, 52, 176]
 
 def readTemperature():    
-    modbus485.modbus485_read_adc(ser)    
-    ser.write(soil_temperature)    
+    modbus485.modbus485_send(soil_temperature)    
     time.sleep(1)    
-    return modbus485.modbus485_read_adc(ser)
+    return modbus485.modbus485_read_adc()
 
-def readHumidity():    
-    modbus485.modbus485_read_adc(ser)    
-    ser.write(soil_humidity)    
+def readHumidity():     
+    modbus485.modbus485_send(soil_humidity)    
     time.sleep(1)    
-    return modbus485.modbus485_read_adc(ser)
+    return modbus485.modbus485_read_adc()
 
 print("Temperature: ", readTemperature())
 print("Humidity: ", readHumidity())
