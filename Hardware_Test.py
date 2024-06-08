@@ -36,19 +36,28 @@ relay8_OFF = [8, 6, 0, 0, 0, 0, 137, 83]
 soil_temperature = [10, 3, 0, 6, 0, 1, 101, 112]
 soil_humidity = [10, 3, 0, 7, 0, 1, 52, 176]
 
-modbus485.modbus485_send(soil_temperature)
-time.sleep(1)
-print('Temperature: ', modbus485.modbus485_read_adc())
-time.sleep(1)
-modbus485.modbus485_send(soil_humidity)
-time.sleep(1)
-print('Humidity: ', modbus485.modbus485_read_adc())
-time.sleep(1)
+def readTemperature():    
+    modbus485.modbus485_read_adc(ser)    
+    ser.write(soil_temperature)    
+    time.sleep(1)    
+    return modbus485.modbus485_read_adc(ser)
+
+def readHumidity():    
+    modbus485.modbus485_read_adc(ser)    
+    ser.write(soil_humidity)    
+    time.sleep(1)    
+    return modbus485.modbus485_read_adc(ser)
 
 modbus485.modbus485_send(relay1_ON)
 time.sleep(1)
+modbus485.modbus485_read()
+time.sleep(1)
+
 modbus485.modbus485_send(relay2_ON)
 time.sleep(1)
+modbus485.modbus485_read()
+time.sleep(1)
+
 modbus485.modbus485_send(relay3_ON)
 time.sleep(1)
 modbus485.modbus485_send(relay4_ON)
@@ -64,8 +73,14 @@ time.sleep(1)
 
 modbus485.modbus485_send(relay1_OFF)
 time.sleep(1)
+modbus485.modbus485_read()
+time.sleep(1)
+
 modbus485.modbus485_send(relay2_OFF)
 time.sleep(1)
+modbus485.modbus485_read()
+time.sleep(1)
+
 modbus485.modbus485_send(relay3_OFF)
 time.sleep(1)
 modbus485.modbus485_send(relay4_OFF)
@@ -79,4 +94,4 @@ time.sleep(1)
 modbus485.modbus485_send(relay8_OFF)
 time.sleep(1)
 
-modbus485.modbus485_read()
+# modbus485.modbus485_read()
