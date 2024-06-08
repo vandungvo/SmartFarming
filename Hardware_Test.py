@@ -10,7 +10,7 @@ except:
 modbus485 = Utilities.modbus485.Modbus485(ser)
 
 #relay1_ON  = [1, 6, 0, 0, 0, 255, 201, 138]
-relay1_ON  = [1, 6, 0, 0, 0, 255, 200, 138]
+relay1_ON  = [0, 6, 0, 0, 0, 255, 200, 91]
 relay1_OFF = [1, 6, 0, 0, 0, 0, 137, 202]
 
 relay2_ON  = [2, 6, 0, 0, 0, 255, 201, 185]
