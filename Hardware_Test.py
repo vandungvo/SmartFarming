@@ -38,11 +38,11 @@ soil_humidity = [10, 3, 0, 7, 0, 1, 52, 176]
 
 modbus485.modbus485_send(soil_temperature)
 time.sleep(1)
-modbus485.modbus485_read_adc()
+print('Temperature: ', modbus485.modbus485_read_adc())
 time.sleep(1)
 modbus485.modbus485_send(soil_humidity)
 time.sleep(1)
-modbus485.modbus485_read_adc()
+print('Humidity: ', modbus485.modbus485_read_adc())
 time.sleep(1)
 
 modbus485.modbus485_send(relay1_ON)
