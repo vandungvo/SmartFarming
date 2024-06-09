@@ -5,5 +5,5 @@ controller = controller.Controller()
 print(controller.readTemperature())
 print(controller.readHumidity())
 
-controller.controlMixer1("ON")
-controller.controlMixer2("ON")
+print(controller.controlMixer1("ON"))
+print(controller.controlMixer2("ON"))
