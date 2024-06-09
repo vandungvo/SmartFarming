@@ -17,4 +17,6 @@ client.connect()
 client.loop_background()
 
 while True:
-    Utilities.modbus485.Modbus485.modbus485_read()
+    controller.readTemperature()
+    controller.readHumidity()
+    time.sleep(1)
