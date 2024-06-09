@@ -46,8 +46,8 @@ print(modbus485.modbus485_read_adc() / 100)
 
 modbus485.modbus485_send(relay1_ON)
 time.sleep(1)
-modbus485.modbus485_read()
-
 modbus485.modbus485_send(relay1_OFF)
 time.sleep(1)
-modbus485.modbus485_read()
+modbus485.modbus485_send(relay2_ON)
+time.sleep(1)
+modbus485.modbus485_send(relay2_OFF)
