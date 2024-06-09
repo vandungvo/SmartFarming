@@ -50,7 +50,7 @@ class Controller:
         time.sleep(1)    
         return modbus485.modbus485_read_adc() / 100
 
-    def controlMixer1(operation):
+    def controlMixer1(self, operation):
         if operation == "ON":
             modbus485.modbus485_send(relay1_ON)
         else:
@@ -58,7 +58,7 @@ class Controller:
         time.sleep(1)
         modbus485.modbus485_read()
 
-    def controlMixer2(operation):
+    def controlMixer2(self, operation):
         if operation == "ON":
             modbus485.modbus485_send(relay2_ON)
         else:
@@ -66,7 +66,7 @@ class Controller:
         time.sleep(1)
         modbus485.modbus485_read()
 
-    def controlMixer3(operation):
+    def controlMixer3(self, operation):
         if operation == "ON":
             modbus485.modbus485_send(relay3_ON)
         else:
@@ -74,7 +74,7 @@ class Controller:
         time.sleep(1)
         modbus485.modbus485_read()
 
-    def controlPumpIn(operation):
+    def controlPumpIn(self, operation):
         if operation == "ON":
             modbus485.modbus485_send(relay7_ON)
         else:
@@ -82,7 +82,7 @@ class Controller:
         time.sleep(1)
         modbus485.modbus485_read()
 
-    def controlPumpOut(operation):
+    def controlPumpOut(self, operation):
         if operation == "ON":
             modbus485.modbus485_send(relay8_ON)
         else:
@@ -90,7 +90,7 @@ class Controller:
         time.sleep(1)
         modbus485.modbus485_read()
 
-    def selectArea1(operation):
+    def selectArea1(self, operation):
         if operation == "ON":
             modbus485.modbus485_send(relay4_ON)
         else:
@@ -98,7 +98,7 @@ class Controller:
         time.sleep(1)
         modbus485.modbus485_read()
 
-    def selectArea2(operation):
+    def selectArea2(self, operation):
         if operation == "ON":
             modbus485.modbus485_send(relay5_ON)
         else:
