@@ -1,16 +1,16 @@
 import Utilities.controller
+from Adafruit_IO import MQTTClient
+import Utilities.connect
+import Utilities.controller
+import time
 
 controller = Utilities.controller.Controller()
 
-print(controller.readTemperature())
-print(controller.readHumidity())
+client = MQTTClient(Utilities.connect.AIO_USERNAME , Utilities.connect.AIO_KEY)
+client.on_connect = Utilities.connect.Connection.connected
+client.on_subscribe = Utilities.connect.Connection.subscribe
+client.on_disconnect = Utilities.connect.Connection.disconnected
+client.on_message = Utilities.connect.Connection.message
 
-controller.controlMixer1("ON")
-controller.controlMixer2("ON")
-controller.controlMixer3("ON")
-controller.controlPumpIn("ON")
-
-controller.controlMixer1("OFF")
-controller.controlMixer2("OFF")
-controller.controlMixer3("OFF")
-controller.controlPumpIn("OFF")
+client.connect()
+client.loop_background()
