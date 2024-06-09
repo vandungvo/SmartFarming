@@ -40,12 +40,12 @@ class Controller:
     def __init__(self):
         pass
 
-    def readTemperature():    
+    def readTemperature(self):    
         modbus485.modbus485_send(soil_temperature)    
         time.sleep(1)    
         return modbus485.modbus485_read_adc() / 100
 
-    def readHumidity():     
+    def readHumidity(self):     
         modbus485.modbus485_send(soil_humidity)    
         time.sleep(1)    
         return modbus485.modbus485_read_adc() / 100

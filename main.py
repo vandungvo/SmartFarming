@@ -1,6 +1,6 @@
-import Utilities.controller
+import Utilities.controller as controller
 
-controller = Utilities.controller.Controller()
+controller = controller.Controller()
 
 print(controller.readTemperature())
 print(controller.readHumidity())
