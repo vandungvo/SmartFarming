@@ -113,3 +113,6 @@ class Controller:
             modbus485.modbus485_send(relay6_OFF)
         time.sleep(1)
         modbus485.modbus485_read()
+
+    def readSerial(self):
+        return modbus485.modbus485_read()

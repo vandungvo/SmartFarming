@@ -1,6 +1,7 @@
 import sys
 from Adafruit_IO import MQTTClient
 import Utilities.controller
+import time
 
 AIO_FEED_IDs = ["nutnhan1", "nutnhan2"]
 AIO_USERNAME = "vovandung"
@@ -41,3 +42,7 @@ client.on_subscribe = subscribe
 client.connect()
 
 client.loop_background()
+
+while True:
+    controller.readSerial()
+    time.sleep(1)
