@@ -5,7 +5,7 @@ import time
 
 AIO_FEED_IDs = ["nutnhan1", "nutnhan2"]
 AIO_USERNAME = "vovandung"
-AIO_KEY = "aio_koLB86LDvN7AIgY9VRbrEU551Ik5"
+AIO_KEY = "aio_mYcO19hMMOjDgL9i77naKCKc7iBJ"
 
 controller = Utilities.controller.Controller()
 
