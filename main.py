@@ -40,4 +40,4 @@ client.on_message = message
 client.on_subscribe = subscribe
 client.connect()
 
-client.loop_blocking()
+client.loop_background()
