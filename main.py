@@ -81,9 +81,8 @@ while True:
     else :
         temperature = temperature / 100
     client.publish("sensor_temperature", temperature)
-    time.sleep(2)
+    
     humidity = controller.readHumidity()
     if humidity == 404 or humidity == 400:
         humidity = 53
     client.publish("sensor_humidity", humidity)
-    time.sleep(2)
