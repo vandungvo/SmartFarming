@@ -3,8 +3,10 @@ from Adafruit_IO import MQTTClient
 import Utilities.controller
 import time
 
-# "relay1_mixer1", "relay2_mixer2", "relay3_mixer3", "relay4_areaSelector1", "relay5_areaSelector2", "relay6_areaSelector3", "relay7_pumpIn", "relay8_pumpOut"
-AIO_FEED_IDs = ["sensor_humidity", "sensor_temperature"]
+AIO_FEED_IDs = ["relay1_mixer1", "relay2_mixer2", "relay3_mixer3", 
+                "relay4_areaSelector1", "relay5_areaSelector2", "relay6_areaSelector3", 
+                "relay7_pumpIn", "relay8_pumpOut",
+                "sensor_humidity", "sensor_temperature"]
 AIO_USERNAME = "vovandung"
 AIO_KEY = ""
 
