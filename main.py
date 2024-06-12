@@ -75,7 +75,15 @@ client.connect()
 client.loop_background()
 
 while True:
-    client.publish("sensor_temperature", controller.readTemperature())
+    temperature = controller.readTemperature()
+    if temperature == 404 or temperature == 400:
+        temperature = 53
+    else :
+        temperature = temperature / 100
+    client.publish("sensor_temperature", temperature)
     time.sleep(2)
-    client.publish("sensor_humidity", controller.readHumidity())
+    humidity = controller.readHumidity()
+    if humidity == 404 or humidity == 400:
+        humidity = 53
+    client.publish("sensor_humidity", humidity)
     time.sleep(2)

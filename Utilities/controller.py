@@ -42,10 +42,12 @@ class Controller:
 
     def readTemperature(self):    
         modbus485.modbus485_send(soil_temperature)  
-        return modbus485.modbus485_read_adc() / 100
+        time.sleep(1)
+        return modbus485.modbus485_read_adc()
 
     def readHumidity(self):     
         modbus485.modbus485_send(soil_humidity)     
+        time.sleep(1)
         return modbus485.modbus485_read_adc()
 
     def controlMixer1(self, operation):
