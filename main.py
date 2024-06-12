@@ -16,14 +16,14 @@ def connected(client):
         client.subscribe(topic)
 
 def subscribe(client , userdata , mid , granted_qos):
-    print("Subscribe thanh cong ...")
+    print("Subscribe successfully")
 
 def disconnected(client):
-    print("Ngat ket noi ...")
+    print("Disconnect")
     sys.exit (1)
 
 def message(client , feed_id , payload):
-    print("Nhan du lieu: " + payload + " , feed id:" + feed_id)
+    print("Data: " + payload + " , feed id:" + feed_id)
     if feed_id == "relay1_mixer1":
         if payload == "0":
             controller.controlMixer1("OFF")
