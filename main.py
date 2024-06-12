@@ -75,7 +75,7 @@ client.connect()
 client.loop_background()
 
 while True:
-    client.publish("send_temperature", controller.readTemperature())
+    client.publish("sensor_temperature", controller.readTemperature())
     time.sleep(1)
-    client.publish("send_humidity", controller.readHumidity())
+    client.publish("sensor_humidity", controller.readHumidity())
     time.sleep(1)
