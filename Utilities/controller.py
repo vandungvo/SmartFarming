@@ -42,19 +42,11 @@ class Controller:
 
     def readTemperature(self):    
         modbus485.modbus485_send(soil_temperature)  
-        temperature = modbus485.modbus485_read_adc()
-        if temperature != 404 or temperature != 400:
-            return temperature / 100
-        else:
-            return 40
+        return modbus485.modbus485_read_adc() / 100
 
     def readHumidity(self):     
         modbus485.modbus485_send(soil_humidity)     
-        humid = modbus485.modbus485_read_adc()
-        if humid < 100:
-            return humid
-        else:
-            return 11
+        return modbus485.modbus485_read_adc()
 
     def controlMixer1(self, operation):
         if operation == "ON":
