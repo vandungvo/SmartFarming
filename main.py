@@ -3,12 +3,10 @@ from Adafruit_IO import MQTTClient
 import Utilities.controller
 import time
 
-AIO_FEED_IDs = ["relay1_mixer1", "relay2_mixer2", "relay3_mixer3", 
-                "relay4_areaSelector1", "relay5_areaSelector2", "relay6_areaSelector3", 
-                "relay7_pumpIn", "relay8_pumpOut"
-                "sensor_humidity", "sensor_temperature"]
+# "relay1_mixer1", "relay2_mixer2", "relay3_mixer3", "relay4_areaSelector1", "relay5_areaSelector2", "relay6_areaSelector3", "relay7_pumpIn", "relay8_pumpOut"
+AIO_FEED_IDs = ["sensor_humidity", "sensor_temperature"]
 AIO_USERNAME = "vovandung"
-AIO_KEY = "aio_mYcO19hMMOjDgL9i77naKCKc7iBJ"
+AIO_KEY = ""
 
 controller = Utilities.controller.Controller()
 
@@ -77,7 +75,7 @@ client.connect()
 client.loop_background()
 
 while True:
-    controller.readSerial()
     client.publish("send_temperature", controller.readTemperature())
+    time.sleep(1)
     client.publish("send_humidity", controller.readHumidity())
     time.sleep(1)
