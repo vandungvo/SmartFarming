@@ -42,9 +42,9 @@ class Controller:
 
     def readTemperature(self):    
         modbus485.modbus485_send(soil_temperature)  
-        temperature = modbus485.modbus485_read_adc() / 100
-        if temperature < 100:
-            return temperature
+        temperature = modbus485.modbus485_read_adc()
+        if temperature != 404 or temperature != 400:
+            return temperature / 100
         else:
             return 40
 

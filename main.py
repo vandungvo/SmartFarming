@@ -76,6 +76,6 @@ client.loop_background()
 
 while True:
     client.publish("sensor_temperature", controller.readTemperature())
-    time.sleep(1)
+    time.sleep(2)
     client.publish("sensor_humidity", controller.readHumidity())
-    time.sleep(1)
+    time.sleep(2)
