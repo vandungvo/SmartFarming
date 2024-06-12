@@ -3,14 +3,17 @@ from Adafruit_IO import MQTTClient
 import Utilities.controller
 import time
 
-AIO_FEED_IDs = ["nutnhan1", "nutnhan2"]
+AIO_FEED_IDs = ["relay1_mixer1", "relay2_mixer2", "relay3_mixer3", 
+                "relay4_areaSelector1", "relay5_areaSelector2", "relay6_areaSelector3", 
+                "relay7_pumpIn", "relay8_pumpOut"
+                "sensor_humidity", "sensor_temperature"]
 AIO_USERNAME = "vovandung"
 AIO_KEY = "aio_mYcO19hMMOjDgL9i77naKCKc7iBJ"
 
 controller = Utilities.controller.Controller()
 
 def connected(client):
-    print("Ket noi thanh cong ...")
+    print("Connect successfully")
     for topic in AIO_FEED_IDs:
         client.subscribe(topic)
 
@@ -23,16 +26,46 @@ def disconnected(client):
 
 def message(client , feed_id , payload):
     print("Nhan du lieu: " + payload + " , feed id:" + feed_id)
-    if feed_id == "nutnhan1":
+    if feed_id == "relay1_mixer1":
         if payload == "0":
             controller.controlMixer1("OFF")
         else:
             controller.controlMixer1("ON")
-    if feed_id == "nutnhan2":
+    if feed_id == "relay2_mixer2":
         if payload == "0":
             controller.controlMixer2("OFF")
         else:
             controller.controlMixer2("ON")
+    if feed_id == "relay3_mixer3":
+        if payload == "0":
+            controller.controlMixer3("OFF")
+        else:
+            controller.controlMixer3("ON")
+    if feed_id == "relay4_areaSelector1":
+        if payload == "0":
+            controller.selectArea1("OFF")
+        else:
+            controller.selectArea1("ON")
+    if feed_id == "relay5_areaSelector2":
+        if payload == "0":
+            controller.selectArea2("OFF")
+        else:
+            controller.selectArea2("ON")
+    if feed_id == "relay6_areaSelector3":
+        if payload == "0":
+            controller.selectArea3("OFF")
+        else:
+            controller.selectArea3("ON")
+    if feed_id == "relay7_pumpIn":
+        if payload == "0":
+            controller.controlPumpIn("OFF")
+        else:
+            controller.controlPumpIn("ON")
+    if feed_id == "relay8_pumpOut":
+        if payload == "0":
+            controller.controlPumpOut("OFF")
+        else:
+            controller.controlPumpOut("ON")
 
 client = MQTTClient(AIO_USERNAME , AIO_KEY)
 client.on_connect = connected
@@ -45,4 +78,6 @@ client.loop_background()
 
 while True:
     controller.readSerial()
+    client.publish("send_temperature", controller.readTemperature())
+    client.publish("send_humidity", controller.readHumidity())
     time.sleep(1)

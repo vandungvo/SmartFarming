@@ -48,7 +48,7 @@ class Controller:
     def readHumidity(self):     
         modbus485.modbus485_send(soil_humidity)    
         time.sleep(1)    
-        return modbus485.modbus485_read_adc() / 100
+        return modbus485.modbus485_read_adc()
 
     def controlMixer1(self, operation):
         if operation == "ON":
